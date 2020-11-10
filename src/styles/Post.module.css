@@ -1,108 +1,108 @@
 .item {
-    width: 100%;
-    max-width: 960px;
-    color: #8a8d91;
-    font-size: 12px;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 960px;
+  color: #8a8d91;
+  font-size: 12px;
+  margin: 0 auto;
 }
 
 .date {
-    margin: 12px 0 15px 0;
-    overflow: hidden;
-    text-align: center;
+  margin: 12px 0 15px 0;
+  overflow: hidden;
+  text-align: center;
 }
 
 .date span {
-    display: inline-block;
-    font-size: 12px;
-    position: relative;
+  display: inline-block;
+  font-size: 12px;
+  position: relative;
 }
 
 .date span:before, .date span:after {
-    width: 100vw;
-    border-bottom: 1px solid #d0d1d3;
-    content: '';
-    margin: 0 15px;
-    position: absolute;
-    top: 50%; 
+  width: 100vw;
+  border-bottom: 1px solid #d0d1d3;
+  content: '';
+  margin: 0 15px;
+  position: absolute;
+  top: 50%; 
 }
 
 .date span:before {
-    right: 100%;
+  right: 100%;
 }
 
 .date span:after {
-    left: 100%;
+  left: 100%;
 }
 
 .post {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
 }
 
 .avatar {
-    width: 39px;
-    height: 39px;
-    align-items: center;
-    background: #e5e4e8;
-    border-radius: 50%;
-    display: flex;
-    flex-shrink: 0;
-    justify-content: center;
-    margin: 3px 0 0 0;
+  width: 39px;
+  height: 39px;
+  align-items: center;
+  background: #e5e4e8;
+  border-radius: 50%;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  margin: 3px 0 0 0;
 }
 
 .avatar span {
-    color: #0078d4;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
+  color: #0078d4;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .content {
-    margin: 0 0 12px 10px;
+  margin: 0 0 12px 10px;
 }
 
 .author {
-    margin: 0 0 3px 0;
+  margin: 0 0 3px 0;
 }
 
 .link {
-    width: 330px;
-    max-width: 100%;
-    background: #f1f1f4;
-    border-radius: 0 10px 10px 10px;
-    display: block;
-    margin: 0 0 1px 0;
-    padding: 10px;
-    text-decoration: none;
+  width: 330px;
+  max-width: 100%;
+  background: #f1f1f4;
+  border-radius: 0 10px 10px 10px;
+  display: block;
+  margin: 0 0 1px 0;
+  padding: 10px;
+  text-decoration: none;
 }
 
 .link .title {
-    color: #252423;
-    font-weight: 700;
-    margin: 0 0 10px 0;
+  color: #252423;
+  font-weight: 700;
+  margin: 0 0 10px 0;
 }
 
 .link .domain {
-    color: #8a8d91;
+  color: #8a8d91;
 }
 
 .image {
-    width: 330px;
-    max-width: 100%;
-    border-radius: 0 10px 10px 10px;
-    margin: 0 0 1px 0;
+  width: 330px;
+  max-width: 100%;
+  border-radius: 0 10px 10px 10px;
+  margin: 0 0 1px 0;
 }
 
 .comment {
-    width: 100%;
-    max-width: 760px;
-    background: #f2f6f9;
-    border-radius: 0 10px 10px 10px;
-    color: #252423;
-    font-size: 14px;
-    margin: 0 0 1px 0;
-    padding: 10px;
+  width: 100%;
+  max-width: 760px;
+  background: #f2f6f9;
+  border-radius: 0 10px 10px 10px;
+  color: #252423;
+  font-size: 14px;
+  margin: 0 0 1px 0;
+  padding: 10px;
 }
