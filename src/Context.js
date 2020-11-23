@@ -1,53 +1,47 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Context = React.createContext();
 
-export class Provider extends Component {
-  state = {
-    posts: [],
-    postsLoaded: false,
-    post: {},
-    postIDActive: '',
-    postLoaded: false,
-  };
+export const Provider = (props) => {
+  const [posts, setPosts] = useState([]);
+  const [postsLoaded, setPostsLoaded] = useState(false);
+  const [post, setPost] = useState({});
+  const [postIDActive, setPostIDActive] = useState('');
+  const [postLoaded, setPostLoaded] = useState(false);
 
-  componentDidMount() {
-    if (!this.state.postsLoaded) {
-      this.getPosts();
+  useEffect(() => {
+    if (!postsLoaded) {
+      getPosts();
     }
-  }
+  }, [postsLoaded]);
 
-  getPosts = async () => {
+  const getPosts = async () => {
     const response = await fetch('https://www.reddit.com/.json');
     const data = await response.json();
-    const posts = data.data.children;
-    this.setState({ posts: posts, postsLoaded: true });
+    setPosts(data.data.children);
+    setPostsLoaded(true);
   }
 
-  getPost = id => {
-    this.setState(prevState => ({
-      post: prevState.posts.filter(post => post.data.id === id)[0].data,
-      postIDActive: id,
-      postLoaded: true
-    }));
+  const getPost = id => {
+    setPost(posts.filter(post => post.data.id === id)[0].data);
+    setPostIDActive(id);
+    setPostLoaded(true);
   }
 
-  render() {
-    return (
-      <Context.Provider value={{
-        posts: this.state.posts,
-        postsLoaded: this.state.postsLoaded,
-        post: this.state.post,
-        postIDActive: this.state.postIDActive,
-        postLoaded: this.state.postLoaded,
-        actions: {
-          getPost: this.getPost
-        }
-      }}>
-        { this.props.children}
-      </Context.Provider>
-    );
-  }
+  return (
+    <Context.Provider value={{
+      posts: posts,
+      postsLoaded: postsLoaded,
+      post: post,
+      postIDActive: postIDActive,
+      postLoaded: postLoaded,
+      actions: {
+        getPost: getPost
+      }
+    }}>
+      {props.children}
+    </Context.Provider>
+  );
 }
 
 export const Consumer = Context.Consumer;
