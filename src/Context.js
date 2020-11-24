@@ -9,6 +9,8 @@ export const Provider = (props) => {
   const [postIDActive, setPostIDActive] = useState('');
   const [postLoaded, setPostLoaded] = useState(false);
 
+  const apiBaseUrl = 'https://www.reddit.com/';
+
   useEffect(() => {
     if (!postsLoaded) {
       getPosts();
@@ -16,7 +18,7 @@ export const Provider = (props) => {
   }, [postsLoaded]);
 
   const getPosts = async () => {
-    const response = await fetch('https://www.reddit.com/.json');
+    const response = await fetch(`${apiBaseUrl}.json`);
     const data = await response.json();
     setPosts(data.data.children);
     setPostsLoaded(true);
@@ -30,6 +32,7 @@ export const Provider = (props) => {
 
   return (
     <Context.Provider value={{
+      apiBaseUrl: apiBaseUrl,
       posts: posts,
       postsLoaded: postsLoaded,
       post: post,
