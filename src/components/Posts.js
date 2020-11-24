@@ -1,22 +1,19 @@
-import React from 'react';
-import { Consumer } from '../Context';
+import React, { useContext } from 'react';
+import { Context } from '../Context';
 import PostsListItem from './PostsListItem';
 
 const Posts = () => {
+  const { posts } = useContext(Context);
   return (
-    <Consumer>
-      {({ posts }) => (
-        <div className="Posts">
-          {posts.map((post) =>
-            <PostsListItem
-              key={post.data.id}
-              postID={post.data.id}
-              post={post.data}
-            />
-          )}
-        </div>
+    <div className="Posts">
+      {posts.map((post) =>
+        <PostsListItem
+          key={post.data.id}
+          postID={post.data.id}
+          post={post.data}
+        />
       )}
-    </Consumer>
+    </div>
   );
 }
 

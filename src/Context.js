@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Context = React.createContext();
+export const Context = React.createContext();
 
 export const Provider = (props) => {
   const [posts, setPosts] = useState([]);
@@ -46,5 +46,3 @@ export const Provider = (props) => {
     </Context.Provider>
   );
 }
-
-export const Consumer = Context.Consumer;

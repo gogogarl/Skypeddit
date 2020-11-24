@@ -1,17 +1,14 @@
-import React from 'react';
-import { Consumer } from '../Context';
+import React, { useContext } from 'react';
+import { Context } from '../Context';
 import Splash from './Splash';
 import Post from './Post';
 
 const Content = () => {
+  const { postLoaded } = useContext(Context);
   return (
-    <Consumer>
-      {({ postLoaded }) => (
-        <div className="Content">
-          {(!postLoaded) ? <Splash /> : <Post />}
-        </div>
-      )}
-    </Consumer>
+    <div className="Content">
+      {(!postLoaded) ? <Splash /> : <Post />}
+    </div>
   );
 }
 
