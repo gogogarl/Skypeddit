@@ -5,7 +5,7 @@ import classes from '../styles/PostsListItem.module.css';
 
 const PostsListItem = (props) => {
   const { postIDActive, actions } = useContext(Context);
-  const thumbnail = (props.post.preview) ? { backgroundImage: `url(${helpers.fixImageURL(props.post.preview.images[0].resolutions[0].url)})` } : null;
+  const thumbnail = (props.post.preview?.images[0].resolutions[0]?.url) ? { backgroundImage: `url(${helpers.fixImageURL(props.post.preview.images[0].resolutions[0].url)})` } : null;
   const classesToggle = (postIDActive === props.postID) ? `${classes.item} ${classes.active}` : `${classes.item}`;
   return (
     <div className={classesToggle} onClick={actions.getPost.bind(this, props.postID)}> {/* () => actions.getPost(props.postID) */}
