@@ -6,7 +6,7 @@ import classes from '../styles/Post.module.css';
 const Post = () => {
   const { post, apiBaseUrl } = useContext(Context);
   const image = (post.preview) ? <a href={post.url} target="_blank" rel="noopener noreferrer"><img className={classes.image} src={helpers.fixImageURL(post.preview.images[0].source.url)} alt={post.title} /></a> : null;
-  const comment = (post.selftext) ? <div className={classes.comment} dangerouslySetInnerHTML={{ __html: post.selftext }} /> : null;
+  const comment = (post.selftext && post.link_flair_type !== 'richtext') ? <div className={classes.comment}>{post.selftext}</div> : null;
   return (
     <div className={classes.item}>
       <div className={classes.date}><span>{helpers.postDate(post.created_utc)}</span></div>
