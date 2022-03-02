@@ -8,6 +8,7 @@ export const Provider = (props) => {
   const [post, setPost] = useState({});
   const [postIDActive, setPostIDActive] = useState('');
   const [postLoaded, setPostLoaded] = useState(false);
+  const [apiFailed, setApiFailed] = useState(false);
 
   const apiBaseUrl = 'https://www.reddit.com/';
 
@@ -18,10 +19,18 @@ export const Provider = (props) => {
   }, [postsLoaded]);
 
   const getPosts = async () => {
-    const response = await fetch(`${apiBaseUrl}.json`);
-    const data = await response.json();
-    setPosts(data.data.children);
-    setPostsLoaded(true);
+    try {
+      const response = await fetch(`${apiBaseUrl}.json`);
+      if (response.ok) {
+        const data = await response.json();
+        setPosts(data.data.children);
+        setPostsLoaded(true);
+      } else {
+        setApiFailed(true);
+      }
+    } catch (error) {
+      setApiFailed(true);
+    }
   }
 
   const getPost = id => {
@@ -38,6 +47,7 @@ export const Provider = (props) => {
       post: post,
       postIDActive: postIDActive,
       postLoaded: postLoaded,
+      apiFailed: apiFailed,
       actions: {
         getPost: getPost
       }
